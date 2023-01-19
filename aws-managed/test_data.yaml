@@ -1,0 +1,27 @@
+---
+'./svc-workshop/instance_infrastructure/cloudformation.yaml':
+  environment:
+    outputs:
+      PublicSubnetOne: subnet-06bc166e54f51890c
+      VpcId: vpc-058e82ab55d6b8233
+      VpcCIDR: 10.0.0.0/16
+      PublicSubnetTwo: subnet-023d55197d7b229d3
+      ContainerSecurityGroup: sg-034e9af9da7cdc37a
+      HostedZoneId: Z05107877S0YEIBMKDIO
+      ECSTaskExecutionRole: arn:aws:iam::084655712707:role/AWSProton-env-multi-svc-beta-ECSTaskExecutionRole-1U9S1835PLOC9
+      ClusterName: AWSProton-env-multi-svc-beta-cloudformation-yaml-TInFItvCxNKvKdX-ECSCluster-sLf2vjKapkeg
+      PublicSubnetThree: subnet-0850a23cc12112351
+      DnsHostname: protonworkshop.beta.local
+  service:
+    name: "front-end"
+  service_instance:
+    name: "front-end-beta"
+    environment: "multi-svc-beta"
+    inputs:
+      port: 3000
+      desired_count: 1
+      task_size: medium
+      scope: public
+      env_vars: >
+        CRYSTAL_URL=http://crystal.protonworkshop.hosted.local:3000/crystal;
+        NODEJS_URL=http://nodejs.protonworkshop.hosted.local:3000
