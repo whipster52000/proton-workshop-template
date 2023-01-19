@@ -4,7 +4,7 @@ Resources:
     DeletionPolicy: Retain
     Properties:
       ImageScanningConfiguration:
-      ScanOnPush: true
+        ScanOnPush: true
   BuildProject:
     Type: AWS::CodeBuild::Project
     Properties:
